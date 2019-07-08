@@ -9,7 +9,6 @@
 class EABlender_image {
 
 	private $api;
-	private $nojo = 'https://aes-entenda-antes-arquivosresized.s3.amazonaws.com';
 
 	function __construct() {
 		if ( class_exists( 'EABlender_API' ) ) {
@@ -19,20 +18,30 @@ class EABlender_image {
 	}
 
 	public function eablender_image($atts = []){
-		$value = shortcode_atts( [
-			'id' => ''
-		], $atts );
-
+		$value = shortcode_atts( ['id' => ''], $atts );
+		$return = null;
 		$response = $this->api->get_product_showcase_image( $value['id'] );
 
-		$return = "É essa a imagem que você queria?<p> <img src=\"";
+		if(!$response->err_message){
 
-		$return .= "https://aes-entenda-antes-arquivosresized.s3.amazonaws.com/";
-			$return .= $response->path;
+			$content = $response->content;
+			$return  = "É essa a imagem que você queria?<p> <img src=\"";
+			$return .= "https://aes-entenda-antes-arquivos.s3.amazonaws.com/";
+			$return .= $content->path;
+			$return .= "\"><br>";
+			$return .= 'Titulo da imagem: ' . $content->title . " ";
+			if(isset($content->keywords)){
+				$return .= 'Tags:';
+				foreach($content->meta->keywords as $keyword){
+					$return .= $keyword . '|';
+				}
+			}
+			$return .= "Título do álbum: " . $content->productShowcase->title;
 
-
-		$return .= "\">";
-
+			$return .= "<br>Nome do profissional:" . $content->productShowcase->userApp->name;
+		} else {
+			$return = $response->err_message;
+		}
 		return $return;
 	}
 }
