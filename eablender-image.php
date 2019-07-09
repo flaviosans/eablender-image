@@ -18,15 +18,15 @@ class EABlender_image {
 	}
 
 	public function eablender_image($atts = []){
-		$value = shortcode_atts( ['id' => ''], $atts );
+		$value = shortcode_atts( ['id' => 'no-id'], $atts );
 		$return = null;
 		$response = $this->api->get_product_showcase_image( $value['id'] );
 
-		if(!$response->err_message){
+		if(!$response->status_code == 200){
 
 			$content = $response->content;
 			$return  = "É essa a imagem que você queria?<p> <img src=\"";
-			$return .= "https://aes-entenda-antes-arquivos.s3.amazonaws.com/";
+			$return .= "https://aes-entenda-antes-teste-arquivos.s3.amazonaws.com/";
 			$return .= $content->path;
 			$return .= "\"><br>";
 			$return .= 'Titulo da imagem: ' . $content->title . " ";
@@ -40,7 +40,7 @@ class EABlender_image {
 
 			$return .= "<br>Nome do profissional:" . $content->productShowcase->userApp->name;
 		} else {
-			$return = $response->err_message;
+			$return = $response->status_code . " " . $response->err_message;
 		}
 		return $return;
 	}
