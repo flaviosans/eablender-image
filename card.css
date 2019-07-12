@@ -1,3 +1,45 @@
+.shadow {
+    -webkit-box-shadow: 4px 7px 14px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 7px 14px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 7px 14px -6px rgba(0, 0, 0, 0.75);
+}
+
+.class_row1 {
+    align-items: center;
+}
+
 .user-img {
-width: 100%;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    object-fit: cover;
+    border: 2px solid #0579FF;
+    cursor: pointer;
+}
+
+.username {
+    color: #606062; 
+    margin-left: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.segments {
+    color: #606062; 
+    margin-left: 10px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.main_picture {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.budget-button {
+    background-color: #ff7700;
+    float: right;
+    font-size: 12px;
+    margin-right: -4px;
 }
