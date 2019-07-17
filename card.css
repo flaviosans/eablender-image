@@ -1,3 +1,61 @@
+.shadow {
+    -webkit-box-shadow: 4px 7px 14px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 7px 14px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 7px 14px -6px rgba(0, 0, 0, 0.75);
+    margin: 20px 0px 20px 0px;
+}
+
+.class_row1 {
+    align-items: center;
+}
+
 .user-img {
-width: 100%;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    object-fit: cover;
+    border: 2px solid #0579FF;
+    cursor: pointer;
+}
+
+.username {
+    color: #606062; 
+    font-size: 11px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.segments {
+    color: #606062; 
+    line-height: 1px;
+    font-size: 9px;
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+.main_picture {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin-top: -15px;
+}
+
+.budget-button {
+    background-color: #ff7700;
+    float: right;
+    font-size: 12px;
+    margin-right: -4px;
+    margin-top: -5px;
+    padding: 3px 10px 3px 10px;,
+}
+
+@media screen and (max-width: 767px) {
+    .user-img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .class_row2 {
+        text-align: center;
+    }
 }
