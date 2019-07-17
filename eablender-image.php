@@ -21,12 +21,12 @@ class EABlender_image {
 	}
 
 	public function eablender_api_missing() {
-		?>
+    ?>
 		<br>
 		<div class="notice notice-warning">
-			<p><?php _e( 'Instale ou ative o plugin EABlender API, ou a integração com o app do Entenda Antes pode estar comprometida', 'my_plugin_textdomain' ); ?></p>
+			<p><?php _e( 'EABlender Images: EABlender API parece não estar presente', 'my_plugin_textdomain' ); ?></p>
 		</div>
-		<?php
+    <?php
 	}
 
 	public function eablender_image_css(){
