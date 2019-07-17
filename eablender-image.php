@@ -14,7 +14,6 @@ class EABlender_image {
 		if ( class_exists( 'EABlender_API' ) ) {
 			$this->api = EABlender_API::get_instance();
 		}
-		
 		add_action('wp_enqueue_scripts', array($this, 'eablender_image_css') );
 		add_shortcode('eablender-image', array($this, 'eablender_image'));
 	}
@@ -22,6 +21,7 @@ class EABlender_image {
 	public function eablender_image_css(){
 		wp_enqueue_style("ea-bridge-card", plugin_dir_url( __FILE__ ) . 'card.css', null, null, false );
 	}
+
 
 	public function eablender_image($atts = []){
 		$return = null;

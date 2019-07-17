@@ -48,3 +48,14 @@
     margin-top: -5px;
     padding: 3px 10px 3px 10px;,
 }
+
+@media screen and (max-width: 767px) {
+    .user-img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .class_row2 {
+        text-align: center;
+    }
+}
