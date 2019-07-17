@@ -13,6 +13,8 @@ class EABlender_image {
 	function __construct() {
 		if ( class_exists( 'EABlender_API' ) ) {
 			$this->api = EABlender_API::get_instance();
+		} else {
+			add_action( 'admin_notices', array($this, 'eablender_api_missing') );
 		}
 		add_shortcode('eablender-image', array($this, 'eablender_image'));
 	}
@@ -34,6 +36,15 @@ class EABlender_image {
 			$return = $response->status_code . " " . $response->err_message;
 		}
 		return $return;
+	}
+
+	function eablender_api_missing() {
+		?>
+		<br>
+		<div class="notice notice-warning">
+			<p><?php _e( 'Instale ou ative o plugin EABlender API, ou a integração com o app do Entenda Antes pode estar comprometida', 'my_plugin_textdomain' ); ?></p>
+		</div>
+		<?php
 	}
 
 }
