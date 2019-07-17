@@ -24,7 +24,7 @@ class EABlender_image {
     ?>
 		<br>
 		<div class="notice notice-warning">
-			<p><?php _e( 'EABlender Images: EABlender API parece não estar presente', 'my_plugin_textdomain' ); ?></p>
+			<p><?php _e( 'EABlender Images: EABlender API parece não estar presente' ); ?></p>
 		</div>
     <?php
 	}
