@@ -1,23 +1,23 @@
 <?php $plugin_path = plugin_dir_url( __FILE__ );?>
 <div class="shadow">
 <div class="col-md-12">
-  <div class="row class_row2">
-            <div class="col-12 col-md-2">
+  <div class="row">
+            <div class="col-3 col-md-2">
                   <img class="user-img" src="<?php echo "$obj->profile_picture" ?>"
                     onclick="window.location.href = 'https://app.entendaantes.com.br/site/<?php echo $obj->user_app->username?>/home'">
             </div>
 
-            <div class="col-12 col-md-10">
+            <div class="col-9 col-md-10">
             <div class="row class_row1">
 
             <div class="col-md-8">
-          <div class="user_information">
-            <span
+          <div style="margin-left: -25px;">
+            <h6 style="margin: 6px 0px -5px 0px;"
                     onclick="window.location.href = 'https://app.entendaantes.com.br/site/<?php echo $obj->user_app->username?>/home'"
-                    class="username"><?php echo $obj->user_app->name ?></span>
-                  <h6
+                    class="username"><?php echo $obj->user_app->name ?></h6>
+                  <span
                     onclick="window.location.href = 'https://app.entendaantes.com.br/site/<?php echo $obj->user_app->username?>/home'"
-                    class="segments"><?php echo $obj->segments?></h6>
+                    class="segments"><?php echo $obj->segments?></span>
                     </div>
                     </div>
 
