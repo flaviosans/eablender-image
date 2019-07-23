@@ -10,11 +10,17 @@ require "eablender-image-resume.php";
 class EABlender_image {
 
 	private $api;
+	private $options;
 
 	function __construct() {
 		if ( class_exists( 'EABlender_API' ) ) {
 			$this->api = EABlender_API::get_instance();
 		}
+
+		if ( class_exists( 'EABlender_Options' ) ) {
+			$this->options = EABlender_Options::get_instance();
+		}
+
 		add_action('wp_enqueue_scripts', array($this, 'eablender_image_css') );
 		add_shortcode('eablender-image', array($this, 'eablender_image'));
 	}
@@ -34,8 +40,11 @@ class EABlender_image {
 		}
 
 		if($response->status_code == 200){
+			$s3_image = $this->check_image_s3();
+			$url_user = $this->options->url_user;
 			$obj = $this->create_card_resume($response);
 			$obj->user_app->name = $this->short_it($obj->user_app->name);
+
 			ob_start();
 			include("card_image.php");
 			$return = ob_get_clean();
@@ -47,13 +56,14 @@ class EABlender_image {
 	}
 
 	public function create_card_resume($response) {
+		$s3_image = $this->check_image_s3();
 		$check_object = $this->check_object_type($response);
 	  	$backgroundImage = $response->content->path;
 	  	$profile_picture = $check_object->userApp->userAppDetails;
 	  	$user_app = $check_object->userApp;
 			  
 			if ($profile_picture->avatar) {
-				$profile_picture = "https://aes-entenda-antes-teste-arquivos.s3.amazonaws.com/" .$profile_picture->avatar;
+				$profile_picture = $s3_image .$profile_picture->avatar;
 			}
 			
 			else {
@@ -91,6 +101,16 @@ class EABlender_image {
 
 		else {
 			return $nome;
+		}
+	}
+
+	public function check_image_s3() {
+		if ($this->options->api == 'http://localhost:8080/') {
+			return $this->options->s3_image;
+		}
+
+		else {
+			return $this->options->s3_image_resized;
 		}
 	}
 }

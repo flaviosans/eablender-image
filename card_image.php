@@ -3,8 +3,8 @@
 <div class="col-md-12">
   <div class="row">
             <div class="col-3 col-md-2">
-                  <img class="user-img" src="<?php echo "$obj->profile_picture" ?>"
-                    onclick="window.location.href = 'https://app.entendaantes.com.br/site/<?php echo $obj->user_app->username?>/home'">
+                  <img class="user-img" src="<?php echo $obj->profile_picture ?>"
+                    onclick="window.location.href = '<?php echo $url_user . $obj->user_app->username?>/home'">
             </div>
 
             <div class="col-9 col-md-10">
@@ -13,10 +13,10 @@
             <div class="col-md-8">
           <div style="margin-left: -25px;">
             <h6 style="margin: 6px 0px -5px 0px;"
-                    onclick="window.location.href = 'https://app.entendaantes.com.br/site/<?php echo $obj->user_app->username?>/home'"
+                    onclick="window.location.href = '<?php echo $url_user . $obj->user_app->username?>/home'"
                     class="username"><?php echo $obj->user_app->name ?></h6>
                   <span
-                    onclick="window.location.href = 'https://app.entendaantes.com.br/site/<?php echo $obj->user_app->username?>/home'"
+                    onclick="window.location.href = '<?php echo $url_user . $obj->user_app->username?>/home'"
                     class="segments"><?php echo $obj->segments?></span>
                     </div>
                     </div>
@@ -24,7 +24,7 @@
             <div class="col-md-4">
 
                   <button
-                    onclick="window.location.href = 'https://app.entendaantes.com.br/site/<?php echo $obj->user_app->username?>/home'"
+                    onclick="window.location.href = '<?php echo $url_user . $obj->user_app->username?>/home'"
                     type="button" class="btn budget-button">
                     Solicitar orçamento
                   </button>
@@ -37,6 +37,6 @@
 
   <div>
     <img class="main_picture"
-      src="https://aes-entenda-antes-teste-arquivos.s3.amazonaws.com/<?php echo "$obj->backgroundImage" ?>">
+      src="<?php echo $s3_image . $obj->backgroundImage ?>">
   </div>
 </div>
