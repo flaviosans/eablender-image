@@ -16,11 +16,7 @@ class EABlender_image {
 		if ( class_exists( 'EABlender_API' ) ) {
 			$this->api = EABlender_API::get_instance();
 		}
-
-		if ( class_exists( 'EABlender_Options' ) ) {
-			$this->options = EABlender_Options::get_instance();
-		}
-
+		
 		add_action('wp_enqueue_scripts', array($this, 'eablender_image_css') );
 		add_shortcode('eablender-image', array($this, 'eablender_image'));
 	}
@@ -31,6 +27,9 @@ class EABlender_image {
 
 
 	public function eablender_image($atts = []){
+		if ( class_exists( 'EABlender_Options' ) ) {
+			$this->options = new EABlender_Options();
+		}
 		$return = null;
 		$value = shortcode_atts( ['id' => 'no-id'], $atts );
 		$response = $this->api->get_product_showcase_image( $value['id'] );

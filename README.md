@@ -62,6 +62,8 @@ Certifique-se de inserir o shortcode com a sintaxe correta e com um id válido.
 * **API do Entenda Antes inacessível:** O plugin deve retornar uma mensagem ao usuário dizendo que a API está inacessível
 * Campos obrigatórios faltantes
   * O administrador deverá preencher as informações do fomulário em configurções->eablender-options.
+* Objeto não instanciado
+  *Provavelmente foi adicionado algum shortcode que está recebendo as informações da api que foi configurada errada.
 * Outros erros encontrados devem ser anotados aqui, com suas (prováveis) soluções
 
 ## Licença
