@@ -1,67 +1,42 @@
-# EABlender - Budget
+# EABlender - Image
 
 É um plugin da família EABlender, que coleta orçamentos e envia para o [App do Entenda antes](https://app.entendaantes.com.br) 
 
 ## O que ele faz?
 
-O EABlender - Budget coleta dados do consumidor interessado em construir/reformar, 
-através de um formulário dividido em 5 etapas. Cada uma das etapas contém campos 
-obrigatórios.
+O EABlender - Image coleta dados dos profissionais/empresas e constrói um card
+personalizado com o intuito de gerar mais orçamentos.
+Este card exibe as seguintes informações:
+
+*Imagem de perfil
+*Nome do usuário
+*Segmento - Apenas o primeiro do array
+*Imagem de Destaque - Pode ser de vitrine de produtos ou de coleção de ideias.
+*Botão de Solicitar Orçamento
+
+É necessário apenas duas etapas para construir o card personalizado
 
 * Etapa 1:
+  *Em configurações no Painel do wordpress existe uma opção como sub-menu chamada "eablender-options",
+  *nesta opção é necessário preencher 4 campos que são:
 
-  * CEP, sem pontos nem traços;
-  * Cidade e estado (preenchido automaticamente ao validar o CEP)
-  * Bairro (preenchido automaticamente ao validar o CEP)
+  *Apenas um exemplo de preenchimento:
+      IMAGE_S3: https://aes-entenda-antes-teste-arquivos.s3.amazonaws.com/
+      IMAGE_S3_RESIZED: https://aes-entenda-antes-arquivosresized.s3.amazonaws.com/
+      API: https://gama.entendaantes.com.br:8443/
+      URL_USER: https://app.entendaantes.com.br/site/
+
+  Ambos os campos Image_s3 são responsáveis por trazer o caminho do s3 para as imagens do card personalizado
+  O campo API é responsável por trocar a base de dados do sistema.
+  O campo URL_USER é responsável por redirecionar o usuário para página do profissional/empresa ao clicar em solicitar orçamento.
 
 * Etapa 2:
 
-  * Categoria em que o orçamento se encaixa
+  *Adicione o shortcode onde deseja
+  *Ex: [eablender-image id="d0e1495e-b932-441d-bea3-f86dceca7be0"]
 
-* Etapa 3:
+  *id="d0e1495e-b932-441d-bea3-f86dceca7be0" é referente ao id da imagem de destaque. 
 
-  * Qual o tipo de imóvel? 
-  
-    * Residência
-    * Comércio
-    * Indústria
-    * Outro
-  
-  * Quando pretende começar?
-  
-    * O mais rápido possível
-    * De 1 a 3 meses
-    * Mais de 3 meses
-    * Não sei
-  
-* Etapa 4:
-
-  * Título: uma descrição breve do que o consumidor deseja fazer
-  * Descrição: uma descrição mais detalhada do que o consumidor deseja fazer
-  * Melhor horário para contato:
-  
-    * Manhã
-    * Tarde
-    * Noite
-    
-  * O pedido é para:
-  
-    * Pessoa física
-    * Pessoa jurídica
-
-* Etapa Final:
-
-  * Nome e sobrenome do consumidor
-  * E-mail do consumidor
-  * Telefone do consumidor
-  * Investimento estimado
-    * Até R$ 20 mil
-    * Até R$ 40 mil
-    * Até R$ 80 mil
-  * Interesse
-    * Saber apenas preços a fim de comparação
-    * Tirar dúvidas para saber melhor o que fazer
-    * Negociar a execução do serviço com um profissional  
 
 ## Como instalar?
 
@@ -69,20 +44,24 @@ Faça o download do repositório como ZIP e instale no Wordpress
 
 ## Como usar?
 
-Insira o shortcode `[eablender-budget]` no lugar onde deve ser exibido o EABlender - Budget
+Insira o shortcode `[eablender-image id="algum id aqui"]` no lugar onde deve ser exibido o EABlender - Image
 
 ## Como não usar?
 
-O shortcode não pode aparecer duas ou mais vezes numa mesma página
+Certifique-se de inserir as informações corretas no formulário do sub-meu do menu configurações do wordpress
+
+Certifique-se de inserir o shortcode com a sintaxe correta e com um id válido.
 
 ## Requisitos:
 
-* O consumidor não pode avançar para a próxima etapa sem que tenha preenchido todos os campos da etapa atual.
+* Preencher os campos do formulário do wordpress presentes em configurações->eablender-options
+
+* Inserir o shortcode `[eablender-image id="algum id aqui"]`
 
 ## Erros esperados:
 * **API do Entenda Antes inacessível:** O plugin deve retornar uma mensagem ao usuário dizendo que a API está inacessível
 * Campos obrigatórios faltantes
-  * O plugin deve voltar campo faltante e informar que ele é obrigatório
+  * O administrador deverá preencher as informações do fomulário em configurções->eablender-options.
 * Outros erros encontrados devem ser anotados aqui, com suas (prováveis) soluções
 
 ## Licença
